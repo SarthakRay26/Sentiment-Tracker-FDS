@@ -457,234 +457,394 @@ class SentimentApp:
     def create_interface(self):
         """Create the Gradio interface with bright, modern styling"""
         
-        # Enhanced CSS for Ocean Blue and Coral theme
+        # 🌟 BRIGHT & CLEAN MODERN THEME 🌟
         css = """
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
         .gradio-container {
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #2196f3 0%, #21cbf3 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
             min-height: 100vh;
+            color: #1e293b;
         }
         
         .main-header {
             text-align: center;
-            background: linear-gradient(135deg, #ff7043 0%, #ffab40 50%, #ffcc02 100%);
-            color: #1a1a1a;
-            padding: 30px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            color: #1e293b;
+            padding: 40px;
             border-radius: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border: 2px solid rgba(255,255,255,0.2);
+            margin: 20px;
+            box-shadow: 
+                0 10px 25px rgba(0, 0, 0, 0.08),
+                0 4px 10px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .main-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #f59e0b);
+            border-radius: 20px 20px 0 0;
         }
         
         .main-header h1 {
-            font-size: 2.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            color: #1e293b;
+            letter-spacing: -1px;
         }
         
         .main-header p {
-            font-size: 1.2rem;
-            opacity: 0.8;
-            margin: 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem;
+            color: #475569;
+            margin: 10px 0;
+            font-weight: 400;
         }
         
-        /* Tab styling */
-        .tab-nav {
-            background: linear-gradient(135deg, #81c784 0%, #4fc3f7 100%);
-            border-radius: 15px;
-            padding: 5px;
-            margin-bottom: 20px;
-        }
-        
-        /* Card-like containers */
+        /* Clean card styling */
         .card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 15px 0;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            border: 1px solid rgba(255,255,255,0.3);
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 24px 0;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.05),
+                0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            color: #1e293b;
         }
         
-        /* Button styling */
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 8px 15px rgba(0, 0, 0, 0.1),
+                0 3px 6px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Modern button styling */
         .btn-primary {
-            background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
             border: none;
             border-radius: 12px;
-            padding: 12px 24px;
+            padding: 16px 32px;
+            font-family: 'Inter', sans-serif;
             font-weight: 600;
-            color: white;
-            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+            font-size: 16px;
+            color: #ffffff;
             transition: all 0.3s ease;
+            box-shadow: 
+                0 4px 14px rgba(59, 130, 246, 0.3),
+                0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
         }
         
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.6);
+            box-shadow: 
+                0 6px 20px rgba(59, 130, 246, 0.4),
+                0 4px 8px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
         }
         
         .btn-secondary {
-            background: linear-gradient(135deg, #ff7043 0%, #ff5722 100%);
+            background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
             border: none;
             border-radius: 12px;
-            padding: 12px 24px;
+            padding: 16px 32px;
+            font-family: 'Inter', sans-serif;
             font-weight: 600;
-            color: white;
-            box-shadow: 0 4px 15px rgba(255, 112, 67, 0.3);
+            font-size: 16px;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 4px 14px rgba(107, 114, 128, 0.3),
+                0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
         }
         
-        /* Input styling */
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 6px 20px rgba(107, 114, 128, 0.4),
+                0 4px 8px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+        }
+        
+        /* Clean input styling */
         .input-field {
-            border-radius: 12px;
-            border: 2px solid rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.9);
-            padding: 12px;
-            font-size: 16px;
+            background: #ffffff !important;
+            border: 2px solid #e2e8f0 !important;
+            border-radius: 12px !important;
+            padding: 16px !important;
+            font-family: 'Inter', sans-serif !important;
+            font-size: 16px !important;
+            color: #1e293b !important;
+            transition: all 0.3s ease !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
         }
         
         .input-field:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #3b82f6 !important;
+            box-shadow: 
+                0 0 0 3px rgba(59, 130, 246, 0.1) !important,
+                0 2px 8px rgba(0, 0, 0, 0.1) !important;
+            outline: none !important;
         }
         
-        /* Results styling */
+        .input-field::placeholder {
+            color: #94a3b8 !important;
+            font-style: normal !important;
+        }
+        
+        /* Clean results containers */
         .results-container {
-            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 15px 0;
-            color: #1565c0;
-            border-left: 5px solid #2196f3;
-            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.1);
-        }
-        
-        .sentiment-positive {
-            background: linear-gradient(135deg, #c8e6c9 0%, #81c784 100%);
-            border-radius: 10px;
-            padding: 15px;
-            margin: 10px 0;
-            color: #2e7d32;
-        }
-        
-        .sentiment-negative {
-            background: linear-gradient(135deg, #ffcdd2 0%, #ef5350 100%);
-            border-radius: 10px;
-            padding: 15px;
-            margin: 10px 0;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 16px;
+            padding: 28px;
+            margin: 20px 0;
+            color: #1e293b;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            box-shadow: 
+                0 4px 6px rgba(14, 165, 233, 0.05),
+                0 1px 3px rgba(0, 0, 0, 0.1);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
         }
         
         /* Chart containers */
         .chart-container {
-            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
-            border-radius: 15px;
+            background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%);
+            border-radius: 16px;
+            padding: 28px;
+            margin: 20px 0;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            box-shadow: 
+                0 4px 6px rgba(245, 158, 11, 0.05),
+                0 1px 3px rgba(0, 0, 0, 0.1);
+            color: #1e293b;
+        }
+        
+        /* Tab styling */
+        .tab-nav {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 16px;
+            padding: 8px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Typography improvements */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif !important;
+            color: #1e293b !important;
+            font-weight: 600 !important;
+            line-height: 1.3 !important;
+        }
+        
+        h2 {
+            color: #334155 !important;
+        }
+        
+        h3 {
+            color: #475569 !important;
+        }
+        
+        p, span, div, li {
+            font-family: 'Inter', sans-serif !important;
+            color: #334155 !important;
+            font-weight: 400 !important;
+            line-height: 1.6 !important;
+        }
+        
+        strong {
+            color: #1e293b !important;
+            font-weight: 600 !important;
+        }
+        
+        /* Accent colors for highlights */
+        .accent-blue {
+            color: #3b82f6 !important;
+            font-weight: 600 !important;
+        }
+        
+        .accent-purple {
+            color: #8b5cf6 !important;
+            font-weight: 600 !important;
+        }
+        
+        .accent-pink {
+            color: #ec4899 !important;
+            font-weight: 600 !important;
+        }
+        
+        .accent-amber {
+            color: #f59e0b !important;
+            font-weight: 600 !important;
+        }
+        
+        /* Special info boxes */
+        .info-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 12px;
             padding: 20px;
-            margin: 15px 0;
-            border-left: 5px solid #ff9800;
-            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.1);
+            margin: 16px 0;
+            color: #1e293b;
         }
         
-        /* Guide styling */
-        .guide-section {
-            background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 15px 0;
-            color: #2d3748;
+        .success-box {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+            color: #1e293b;
         }
         
-        /* Animation for loading */
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-        
-        .loading {
-            animation: pulse 2s infinite;
+        .warning-box {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+            color: #1e293b;
         }
         
         /* Responsive design */
         @media (max-width: 768px) {
             .main-header h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             .main-header p {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
+            .card {
+                padding: 24px;
+                margin: 16px 0;
+            }
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 6px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #cbd5e1, #94a3b8);
+            border-radius: 6px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #94a3b8, #64748b);
         }
         """
         
         with gr.Blocks(css=css, title="Customer Sentiment Summarizer", theme=gr.themes.Soft()) as interface:
             
-            # Enhanced Header
+            # ✨ CLEAN & BRIGHT HEADER ✨
             gr.Markdown("""
             <div class="main-header">
-                <h1>🌟 Customer Sentiment Summarizer 🌟</h1>
-                <p>✨ Powered by Advanced AI Models: BERT & BART ✨</p>
-                <p>🚀 Smart Product-Based Review Analysis Platform 🚀</p>
+                <h1>🎯 Customer Sentiment Analyzer</h1>
+                <p><span class="accent-blue">Powered by Advanced AI:</span> <span class="accent-purple">BERT</span> & <span class="accent-pink">BART</span></p>
+                <p><span class="accent-amber">Smart Product Review Analysis Platform</span></p>
             </div>
             """)
             
-            # Welcome message with bright styling
+            # CLEAN WELCOME INTERFACE
             gr.Markdown("""
             <div class="card">
-                <h2 style="color: #667eea; text-align: center; margin-bottom: 15px;">
-                    🎯 Welcome to the Future of Review Analysis! 🎯
+                <h2 style="text-align: center; margin-bottom: 20px;">
+                    🌟 Welcome to Professional Review Analysis
                 </h2>
-                <p style="text-align: center; font-size: 1.1rem; color: #4a5568;">
-                    Discover what customers really think about any product with our AI-powered sentiment analysis.
-                    Just enter a product name and watch the magic happen! ✨
-                </p>
+                <div style="text-align: center; font-size: 1.1rem; line-height: 1.8;">
+                    <p><strong class="accent-blue">Discover customer insights</strong> with our AI-powered sentiment analysis</p>
+                    <p><strong class="accent-purple">Advanced machine learning</strong> models process thousands of reviews instantly</p>
+                    <p><strong class="accent-pink">Beautiful visualizations</strong> and comprehensive summaries at your fingertips</p>
+                    <div class="info-box" style="margin-top: 20px;">
+                        <strong>🚀 Ready to start?</strong> Enter any product name above to analyze real customer reviews!
+                    </div>
+                </div>
             </div>
             """)
             
             # Main tabs
             with gr.Tabs():
                 
-                # Tab 1: Product Review Analysis
-                with gr.TabItem("🔍 Product Review Analysis"):
+                # MATRIX SCANNER TAB
+                with gr.TabItem("� QUANTUM MATRIX SCANNER"):
                     gr.Markdown("""
                     <div class="card">
-                        <h3 style="color: #667eea; margin-bottom: 15px;">
-                            🔍 Smart Product-Based Review Analysis
+                        <h3 style="margin-bottom: 20px; font-size: 1.8rem;">
+                            � NEURAL QUANTUM MATRIX EMOTION SCANNER
                         </h3>
-                        <p style="color: #4a5568; font-size: 1.1rem;">
-                            Enter any product name to instantly analyze thousands of real customer reviews! 
-                            Our AI will find the most relevant datasets and provide comprehensive insights. 🎯
+                        <p style="font-size: 1.2rem; line-height: 1.6;">
+                            🌌 <strong>INITIATE MATRIX SCAN:</strong> Upload any product designation into our quantum neural grid! 
+                            Our cybernetic emotion-analysis cores will scan through thousands of digital consciousness fragments 
+                            to decode the collective emotional matrix! 🤖✨
                         </p>
+                        <div style="margin-top: 15px; padding: 15px; background: rgba(255, 0, 255, 0.1); border-radius: 10px; border-left: 4px solid #ff00ff;">
+                            <strong style="color: #ff00ff;">⚡ QUANTUM PROCESS:</strong>
+                            <span style="color: #00ffff;">Neural networks → Emotion extraction → Matrix compilation → Holographic visualization</span>
+                        </div>
                     </div>
                     """)
                     
                     with gr.Row():
                         with gr.Column(scale=2):
                             product_search_input = gr.Textbox(
-                                label="🔍 Product Search",
-                                placeholder="✨ Try: iPhone 15, MacBook Pro, Samsung Galaxy, AirPods, or any product!",
+                                label="� QUANTUM PRODUCT MATRIX",
+                                placeholder="⚡ ENTER MATRIX CODE: iPhone-15 | MacBook-Pro | Galaxy-Ultra | AirPods-Max | Tesla-Cybertruck ⚡",
                                 value="iPhone",
-                                info="🎯 Enter any product name and we'll find the perfect dataset for analysis!",
+                                info="� INPUT ANY PRODUCT DESIGNATION FOR NEURAL MATRIX SCAN 🌐",
                                 elem_classes=["input-field"]
                             )
                         with gr.Column(scale=1):
                             sample_size_input = gr.Slider(
-                                label="📊 Sample Size",
+                                label="🧠 NEURAL SAMPLE MATRIX",
                                 minimum=10,
                                 maximum=500,
                                 value=50,
                                 step=10,
-                                info="🔢 Number of reviews to analyze (more = better insights!)"
+                                info="⚡ QUANTUM PROCESSING POWER (More = Deeper Matrix Scan)"
                             )
                     
                     with gr.Row():
                         product_analyze_btn = gr.Button(
-                            "� Find & Analyze Reviews", 
+                            "🚀 INITIATE MATRIX SCAN", 
                             variant="primary", 
                             size="lg",
                             elem_classes=["btn-primary"]
                         )
                         product_clear_btn = gr.Button(
-                            "🗑️ Clear Results", 
+                            "� NEURAL RESET", 
                             variant="secondary",
                             elem_classes=["btn-secondary"]
                         )
@@ -724,37 +884,42 @@ class SentimentApp:
                             elem_classes=["chart-container"]
                         )
                 
-                # Tab 2: Single Review Analysis
-                with gr.TabItem("📝 Single Review Analysis"):
+                # NEURAL SINGLE-UNIT ANALYSIS
+                with gr.TabItem("🧠 NEURAL UNIT SCANNER"):
                     gr.Markdown("""
                     <div class="card">
-                        <h3 style="color: #667eea; margin-bottom: 15px;">
-                            📝 Deep Dive into Individual Reviews
+                        <h3 style="margin-bottom: 20px; font-size: 1.8rem;">
+                            🧠 INDIVIDUAL CONSCIOUSNESS PROBE
                         </h3>
-                        <p style="color: #4a5568; font-size: 1.1rem;">
-                            Paste any customer review to get detailed sentiment analysis with confidence scores! 
-                            Perfect for understanding specific feedback in detail. 🔍
+                        <p style="font-size: 1.2rem; line-height: 1.6;">
+                            🔬 <strong>SINGLE NEURAL MATRIX ANALYSIS:</strong> Upload any singular digital consciousness fragment! 
+                            Our advanced emotion-detection algorithms will perform a deep neural scan to decode 
+                            the complete emotional spectrum with quantum-level precision! ⚡🎯
                         </p>
+                        <div style="margin-top: 15px; padding: 15px; background: rgba(0, 255, 255, 0.1); border-radius: 10px; border-left: 4px solid #00ffff;">
+                            <strong style="color: #00ffff;">🔬 PRECISION MODE:</strong>
+                            <span style="color: #ff00ff;">Deep neural scanning → Emotion mapping → Confidence calculation → Holographic display</span>
+                        </div>
                     </div>
                     """)
                     
                     with gr.Row():
                         single_input = gr.Textbox(
-                            label="📝 Customer Review",
-                            placeholder="✨ Paste any customer review here! Try: 'This iPhone is amazing! Great camera and battery life.'",
+                            label="🧠 CONSCIOUSNESS FRAGMENT INPUT",
+                            placeholder="⚡ INSERT NEURAL DATA: 'This iPhone is a technological masterpiece! Neural pathways activated by superior camera matrix and quantum battery core.' ⚡",
                             lines=5,
                             elem_classes=["input-field"]
                         )
                     
                     with gr.Row():
                         single_analyze_btn = gr.Button(
-                            "🔍 Analyze Review", 
+                            "� NEURAL PROBE ACTIVATED", 
                             variant="primary", 
                             size="lg",
                             elem_classes=["btn-primary"]
                         )
                         single_clear_btn = gr.Button(
-                            "🗑️ Clear", 
+                            "🧪 CLEAR PROBE", 
                             variant="secondary",
                             elem_classes=["btn-secondary"]
                         )
@@ -791,17 +956,22 @@ class SentimentApp:
                             elem_classes=["chart-container"]
                         )
                 
-                # Tab 3: Multiple Reviews Analysis
-                with gr.TabItem("📋 Multiple Reviews Analysis"):
+                # MULTI-CONSCIOUSNESS COLLECTIVE ANALYSIS
+                with gr.TabItem("🌌 HIVE MIND ANALYZER"):
                     gr.Markdown("""
                     <div class="card">
-                        <h3 style="color: #667eea; margin-bottom: 15px;">
-                            📋 Bulk Review Analysis Powerhouse
+                        <h3 style="margin-bottom: 20px; font-size: 1.8rem;">
+                            🌌 COLLECTIVE CONSCIOUSNESS MATRIX
                         </h3>
-                        <p style="color: #4a5568; font-size: 1.1rem;">
-                            Paste multiple customer reviews to get comprehensive insights! Perfect for 
-                            analyzing batches of feedback, survey responses, or multiple product reviews. 🚀
+                        <p style="font-size: 1.2rem; line-height: 1.6;">
+                            💫 <strong>HIVE MIND NEURAL NETWORK:</strong> Upload multiple digital consciousness fragments 
+                            for collective emotion matrix analysis! Our quantum processors will synchronize with 
+                            the hive mind to extract patterns from the collective digital soul! 🔮⚡
                         </p>
+                        <div style="margin-top: 15px; padding: 15px; background: rgba(255, 102, 0, 0.1); border-radius: 10px; border-left: 4px solid #ff6600;">
+                            <strong style="color: #ff6600;">🌟 COLLECTIVE MODE:</strong>
+                            <span style="color: #00ffff;">Mass consciousness upload → Hive mind sync → Pattern recognition → Collective sentiment hologram</span>
+                        </div>
                     </div>
                     """)
                     
