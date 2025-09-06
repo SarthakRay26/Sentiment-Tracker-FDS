@@ -1,0 +1,41 @@
+# Core ML and NLP libraries
+torch>=1.9.0
+transformers>=4.20.0
+sentence-transformers>=2.2.0
+tokenizers>=0.13.0
+
+# Gradio for frontend
+gradio>=3.40.0
+
+# Text processing and NLP
+nltk>=3.8
+gensim>=4.2.0
+bertopic>=0.15.0
+
+# Data manipulation and visualization
+pandas>=1.5.0
+numpy>=1.21.0
+matplotlib>=3.5.0
+seaborn>=0.11.0
+
+# Additional dependencies
+scikit-learn>=1.1.0
+umap-learn>=0.5.3
+hdbscan>=0.8.28
+
+# Web and utilities
+requests>=2.28.0
+tqdm>=4.64.0
+
+# Optional: GPU acceleration (uncomment if you have CUDA)
+# torch-audio>=0.9.0
+# torch-vision>=0.10.0
+
+# For deployment
+gunicorn>=20.1.0
+uvicorn>=0.18.0
+
+# Development and testing (optional)
+pytest>=7.0.0
+black>=22.0.0
+flake8>=5.0.0

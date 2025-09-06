@@ -1,0 +1,43 @@
+You are an AI coding assistant. I want you to create a complete project called "Customer Sentiment Summarizer Chatbot".  
+The project should have proper directories for frontend and backend.  
+
+Requirements:
+1. **Frontend**
+   - Use Gradio for a simple chatbot-style interface.
+   - Input: customer review text.
+   - Output: 
+     a) Sentiment (positive/negative/neutral/mixed with scores)  
+     b) Topics detected (readable labels, e.g., "Battery Performance")  
+     c) Summary (short, fluent text).  
+   - (Optional) A small bar chart showing sentiment distribution if multiple reviews are analyzed.
+
+2. **Backend**
+   - Python-based backend using Hugging Face models and NLP tools.  
+   - Sentiment Analysis: DistilBERT (distilbert-base-uncased-finetuned-sst-2-english).  
+   - Topic Modeling: BERTopic (fallback: Gensim LDA if BERTopic too heavy).  
+   - Summarization: BART-large-CNN (fallback: T5-small).  
+   - Make modular Python files: sentiment.py, topics.py, summarizer.py, and main.py.  
+
+3. **Deployment**
+   - The backend and frontend should integrate smoothly.  
+   - Prepare requirements.txt with dependencies (transformers, gradio, nltk, gensim, bertopic, matplotlib, torch).  
+   - Ensure it can be deployed easily to Hugging Face Spaces.  
+
+4. **Directory Structure**
+   customer-sentiment-summarizer/
+   ├── backend/
+   │   ├── sentiment.py       # sentiment analysis code
+   │   ├── topics.py          # topic modeling code
+   │   ├── summarizer.py      # summarization code
+   │   ├── main.py            # integrates everything
+   │   └── __init__.py
+   ├── frontend/
+   │   ├── app.py             # Gradio interface
+   │   └── __init__.py
+   ├── data/
+   │   └── sample_reviews.txt # optional dataset
+   ├── requirements.txt
+   ├── README.md
+   └── .gitignore
+
+Please generate code scaffolding and starter implementations for all these files.

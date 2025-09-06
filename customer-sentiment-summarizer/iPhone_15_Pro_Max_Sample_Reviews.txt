@@ -1,0 +1,28 @@
+iPhone 15 Pro Max Sample Reviews for Manual Analysis
+=================================================
+
+Copy and paste these reviews into the "Multiple Reviews Analysis" tab:
+
+The iPhone 15 Pro Max is absolutely incredible! The camera quality is outstanding, especially the new 5x optical zoom. Battery life easily lasts all day with heavy usage. The titanium build feels premium and lightweight. Face ID works perfectly even in low light. The new Action Button is customizable and very useful. Only downside is the price, but the quality justifies it. Highly recommend!
+
+Upgraded from iPhone 13 Pro and the difference is amazing. The 5x zoom is a game changer for photography. Battery improvement is noticeable. Titanium feels much better than steel. Love the new customizable Action Button. USB-C is finally here! Worth every penny.
+
+Great phone but has some issues. Camera is fantastic, no complaints there. Battery lasts all day easily. However, the phone still feels quite heavy despite titanium. Price is way too high for incremental upgrades. The Action Button is nice but not revolutionary. Good phone but overpriced.
+
+Love everything about this phone! Coming from Android, iOS is smooth and intuitive. The camera system is phenomenal - especially portrait mode and night photography. Build quality is exceptional. Face ID is lightning fast. Battery easily gets me through a full day. The ecosystem integration is seamless.
+
+Disappointed with this purchase. Yes, the camera is good but not significantly better than iPhone 14 Pro. Battery life is decent but nothing special. The titanium doesn't feel much different from steel. Way overpriced for minimal improvements. Action Button is a gimmick. Would not recommend at this price point.
+
+The new iPhone 15 Pro Max exceeded my expectations! The display is gorgeous and the 120Hz makes everything buttery smooth. Camera improvements are substantial - the 5x telephoto is incredible for portraits. Battery easily lasts 1.5 days with moderate usage. Build quality is top-notch. iOS 17 runs flawlessly. Worth the upgrade!
+
+Mixed feelings about this phone. The good: camera is excellent, build quality is premium, battery life is solid. The bad: price is astronomical, titanium doesn't feel much different, incremental improvements over 14 Pro. The Action Button is useful but not revolutionary. Good phone but maybe wait for price drop.
+
+Coming from iPhone 12, this is a massive upgrade! The camera system is in a league of its own. The 5x zoom is perfect for travel photography. Battery life is exceptional - easily lasts all day even with heavy usage. The titanium build is beautiful and feels premium. Face ID is incredibly fast. Absolutely love it!
+
+Instructions:
+1. Open http://localhost:7860 in your browser
+2. Go to the "Multiple Reviews Analysis" tab
+3. Copy all the reviews above (just the review text, not the headers)
+4. Paste them in the text box (one review per line)
+5. Click "Analyze Reviews"
+6. View the comprehensive analysis with sentiment, topics, and summary!
